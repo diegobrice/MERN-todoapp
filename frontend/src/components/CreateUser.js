@@ -6,7 +6,8 @@ class CreateUser extends Component {
     users: [],
     username: "",
   };
-  async componentDidMount() {
+
+  componentDidMount() {
     this.getUsers();
   }
 
@@ -21,10 +22,9 @@ class CreateUser extends Component {
 
   onSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost:4000/api/users", {
+    await axios.post("http://localhost:4000/api/users", {
       username: this.state.username,
     });
-    console.log(res);
     this.setState({ username: "" });
     this.getUsers();
   };
